@@ -16,12 +16,28 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/results", (request, response) -> {
+    post("/puzzlePage", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String inputString = request.queryParams("userString");
       String puzzleString = WordPuzzle.runWordPuzzle(inputString);
       model.put("puzzleString", puzzleString);
-      model.put("template", "templates/results.vtl");
+      model.put("inputString", inputString);
+      model.put("template", "templates/puzzlePage.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/guess", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String inputString = request.queryParams("inputString");
+      String guessString = request.queryParams("guessString");
+      String guessCorrect;
+      if (inputString.equals(guessString)) {
+        guessCorrect = "Congratulations, you solved the puzzle!";
+      } else {
+        guessCorrect = "Sorry, that is not the correct answer.";
+      }
+      model.put("guessCorrect", guessCorrect);
+      model.put("template", "templates/guess.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

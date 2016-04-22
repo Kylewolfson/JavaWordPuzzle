@@ -1,0 +1,11 @@
+<h1>Your puzzle is:</h1>
+$puzzleString
+
+<form action='/guess' method='get'>
+  <div class="form-group">
+    <label for="guessString">Enter string</label>
+    <input id="guessString" name="guessString" class="form-control" type="text">
+  </div>
+  <input type="hidden" name="inputString" value="$inputString">
+  <button type="submit" class="btn btn-info">Go!</button>
+</form>
