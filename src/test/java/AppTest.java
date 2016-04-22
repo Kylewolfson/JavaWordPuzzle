@@ -35,7 +35,7 @@ public class AppTest extends FluentTest {
     fill("#userString").with("Hello");
     submit(".btn");
     fill("#guessString").with("This is a terrible guess");
-    submit(".btn");
+    submit("#guess");
     assertThat(pageSource()).contains("Sorry, that is not the correct answer.");
   }
   @Test
@@ -44,7 +44,7 @@ public class AppTest extends FluentTest {
     fill("#userString").with("Hello");
     submit(".btn");
     fill("#guessString").with("Hello");
-    submit(".btn");
+    submit("#guess");
     assertThat(pageSource()).contains("Congratulations, you solved the puzzle!");
   }
 }

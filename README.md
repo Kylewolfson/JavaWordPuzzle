@@ -19,7 +19,7 @@ _{Installation instructions pending}_
 
 ## Known Bugs
 
-_{Solution currently case-sensitive, could be }_
+_{Solution currently case-sensitive, could be changed to be more user-friendly.}_
 
 ## Support and contact details
 

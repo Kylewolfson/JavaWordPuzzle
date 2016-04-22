@@ -26,6 +26,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/puzzlePageWithHint", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String inputString = request.queryParams("inputString");
+      String puzzleString = WordPuzzle.runWordPuzzleWithHint(inputString);
+      model.put("puzzleString", puzzleString);
+      model.put("inputString", inputString);
+      model.put("template", "templates/puzzlePageWithHint.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/guess", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String inputString = request.queryParams("inputString");
@@ -40,7 +50,5 @@ public class App {
       model.put("template", "templates/guess.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
   }
-
 }
