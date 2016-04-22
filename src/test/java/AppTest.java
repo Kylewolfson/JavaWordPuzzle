@@ -47,4 +47,12 @@ public class AppTest extends FluentTest {
     submit("#guess");
     assertThat(pageSource()).contains("Congratulations, you solved the puzzle!");
   }
+  @Test
+  public void hintPage() {
+    goTo("http://localhost:4567/");
+    fill("#userString").with("Hello");
+    submit(".btn");
+    submit("#hint");
+    assertThat(pageSource()).contains("Hell-");
+  }
 }
